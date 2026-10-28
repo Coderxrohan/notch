@@ -1,0 +1,21 @@
+[package]
+name = "notchy"
+version = "0.1.0"
+description = "A notch for your Windows screen"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+windows = { version = "0.58", features = ["Foundation", "Media_Control", "Win32_System_WinRT"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
